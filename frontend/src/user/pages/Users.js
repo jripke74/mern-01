@@ -6,7 +6,7 @@ const Users = () => {
       id: "u1",
       name: "Jeff Rip",
       image:
-        "https://www.google.com/url?sa=i&url=https%3A%2F%2Fgratisography.com%2Fphoto%2Fcool-glowing-flower%2F&psig=AOvVaw2CDPbkAKz--FNl-Hap5og5&ust=1698943817088000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCMiA2Ieho4IDFQAAAAAdAAAAABAE",
+        "https://gratisography.com/wp-content/uploads/2023/05/gratisography-luminescent-flower-free-stock-photo-1170x780.jpg",
       places: 3,
     },
   ];
