@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "mapkit-react": "^1.14.0",
     "react-transition-group": "^4.4.5"
   }
 }
