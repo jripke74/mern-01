@@ -7,6 +7,8 @@ import {
   VALIDATOR_MINLENGTH,
 } from "../../shared/util/validators";
 
+import "./PlaceForm.css";
+
 const DUMMY_PLACES = [
   {
     id: "p1",
@@ -39,7 +41,7 @@ const DUMMY_PLACES = [
 const UpdatePlace = () => {
   const placeId = useParams().placeId;
 
-  const identifiedPlace = DUMMY_PLACES.find((p) => p.id === placedId);
+  const identifiedPlace = DUMMY_PLACES.find((p) => p.id === placeId);
 
   if (!identifiedPlace) {
     return (
@@ -50,7 +52,7 @@ const UpdatePlace = () => {
   }
 
   return (
-    <form>
+    <form className="place-form">
       <Input
         id="title"
         element="input"

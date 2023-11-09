@@ -35,7 +35,7 @@ const Button = (props) => {
       } ${props.danger && "button--danger"}`}
       type={props.type}
       onClick={props.onClick}
-      disable={props.disable}
+      disabled={props.disabled}
     >
       {props.children}
     </button>
