@@ -19,11 +19,11 @@ const App = () => {
 
   const login = useCallback(() => {
     setIsLoggedIn(true);
-  });
+  }, []);
 
   const logout = useCallback(() => {
     setIsLoggedIn(false);
-  });
+  }, []);
 
   return (
     <AuthContext.Provider
