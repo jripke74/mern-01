@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import Input from "../../shared/components/FormElements/Input";
@@ -9,7 +9,6 @@ import {
   VALIDATOR_MINLENGTH,
 } from "../../shared/util/validators";
 import { useForm } from "../../shared/hooks/form-hook";
-
 import "./PlaceForm.css";
 
 const DUMMY_PLACES = [

@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import React, { useState, useContext } from "react";
 
 import Card from "../../shared/components/UIElements/Card";
 import Input from "../../shared/components/FormElements/Input";
@@ -9,7 +9,7 @@ import {
   VALIDATOR_REQUIRE,
 } from "../../shared/util/validators";
 import { useForm } from "../../shared/hooks/form-hook";
-import { AuthContext } from '../../shared/context/auth-context';
+import { AuthContext } from "../../shared/context/auth-context";
 import "./Auth.css";
 
 const Auth = () => {
@@ -95,7 +95,7 @@ const Auth = () => {
           onInput={inputHandler}
         />
         <Button type="submit" disabled={!formState.isValid}>
-          {isLoginMode ? "SIGNUP" : "LOGIN"}
+          {isLoginMode ? "LOGIN" : "SIGNUP"}
         </Button>
       </form>
       <Button inverse onClick={switchModeHandler}>
