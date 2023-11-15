@@ -2,6 +2,7 @@ const { v4: uuid } = require("uuid");
 const { validationResult } = require("express-validator");
 
 const HttpError = require("../models/http-error");
+const { appleMaps } = require("../util/location");
 
 let DUMMY_PLACES = [
   {
@@ -53,6 +54,18 @@ const createPlace = (req, res, next) => {
     throw new HttpError("Invalid inputs passed, please check your data.", 422);
   }
 
+  // Call the geocode function
+  appleMaps
+    .geocode({
+      q: "1600 Pennsylvania Avenue NW NW, Washington, D.C., 20500,",
+    })
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+
   const { title, description, coordinates, address, creator } = req.body;
   const createdPlace = {
     id: uuid(),
@@ -89,7 +102,7 @@ const updatePlace = (req, res, next) => {
 
 const deletePlace = (req, res, next) => {
   const placeId = req.params.pid;
-  if (!DUMMY_PLACES.find(p => p.id === placeId)) {
+  if (!DUMMY_PLACES.find((p) => p.id === placeId)) {
     throw new HttpError("Could not find a place for that id.", 404);
   }
   DUMMY_PLACES = DUMMY_PLACES.filter((p) => p.id !== placeId);
