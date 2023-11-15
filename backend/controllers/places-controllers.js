@@ -2,7 +2,7 @@ const { v4: uuid } = require("uuid");
 const { validationResult } = require("express-validator");
 
 const HttpError = require("../models/http-error");
-const { appleMaps } = require("../util/location");
+const { getCoordsForAddress } = require("../util/location");
 
 let DUMMY_PLACES = [
   {
@@ -48,25 +48,22 @@ const getPlacesByUserId = (req, res, next) => {
   res.json({ places });
 };
 
-const createPlace = (req, res, next) => {
+const createPlace = async (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    throw new HttpError("Invalid inputs passed, please check your data.", 422);
+    next(new HttpError("Invalid inputs passed, please check your data.", 422));
   }
 
-  // Call the geocode function
-  appleMaps
-    .geocode({
-      q: "1600 Pennsylvania Avenue NW NW, Washington, D.C., 20500,",
-    })
-    .then((response) => {
-      console.log(response);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  const { title, description, address, creator } = req.body;
+  let coordinates;
 
-  const { title, description, coordinates, address, creator } = req.body;
+  // Call the geocode function
+  try {
+    coordinates = await getCoordsForAddress(address);
+  } catch (error) {
+    return next(error);
+  }
+  
   const createdPlace = {
     id: uuid(),
     title,
