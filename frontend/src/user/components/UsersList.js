@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react';
 
-import UserItem from "./UserItem";
-import Card from "../../shared/components/UIElements/Card";
-import "./UsersList.css";
+import UserItem from './UserItem';
+import Card from '../../shared/components/UIElements/Card';
+import './UsersList.css';
 
-const UserList = (props) => {
+const UsersList = props => {
   if (props.items.length === 0) {
     return (
       <div className="center">
@@ -17,7 +17,7 @@ const UserList = (props) => {
 
   return (
     <ul className="users-list">
-      {props.items.map((user) => (
+      {props.items.map(user => (
         <UserItem
           key={user.id}
           id={user.id}
@@ -30,4 +30,4 @@ const UserList = (props) => {
   );
 };
 
-export default UserList;
+export default UsersList;
